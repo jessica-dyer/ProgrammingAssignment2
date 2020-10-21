@@ -10,10 +10,10 @@ makeCacheMatrix <- function(x = matrix()) {
     cachedInverse <<- NULL
   }
   get <- function() x 
-  getInverse <- function() {
+  getInverse <- function(...) {
     if(is.null(cachedInverse)) {
       message("doing the heavy calculations!")
-      cachedInverse <<- solve(x)
+      cachedInverse <<- solve(x, ...)
     }
     cachedInverse
   }
@@ -23,7 +23,7 @@ makeCacheMatrix <- function(x = matrix()) {
 ## Write a short comment describing this function
 
 cacheSolve <- function(x, ...) {
-        x$getInverse()
+        x$getInverse(...)
 }
 
 # makeVector <- function(x = numeric()) {
